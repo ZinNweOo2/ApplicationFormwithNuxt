@@ -1,0 +1,27 @@
+img {
+    width: 150px;
+    height: 150px;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px 1px cyan;
+}
+.card-title {
+    color: rgb(71, 157, 255);
+}
+.underline {
+    border-bottom: 1px solid rgb(71, 71, 71);
+}
+.parent {
+    position: relative;
+}
+.child {
+    display: inline-block;
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+}
+.back{
+    color: white;
+    background-color: rgb(71, 157, 255);
+    padding: 5px 20px;
+}

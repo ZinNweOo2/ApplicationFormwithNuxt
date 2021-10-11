@@ -1,0 +1,12 @@
+    img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .card-title {
+        color: rgb(71, 157, 255);
+    }
+
+    .underline {
+        border-bottom: 1px solid rgb(71, 71, 71);
+    }

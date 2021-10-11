@@ -1,0 +1,28 @@
+.card-title {
+    color: rgb(71, 157, 255);
+}
+
+.err-msg {
+    color: red;
+}
+
+.errorMsg {
+    background: rgb(255, 108, 108);
+    color: white;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.invalid-message {
+    color: red;
+}
+
+.errorMsg p {
+    padding: 5px;
+}
+
+.background-image {
+    background: url("~assets/download.png");
+}

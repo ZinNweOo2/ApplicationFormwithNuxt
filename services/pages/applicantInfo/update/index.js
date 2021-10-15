@@ -15,6 +15,8 @@ import {
     size,
 } from 'vee-validate/dist/rules'
 import { mapGetters } from 'vuex'
+// import constants from '../../../../constants'
+
 setInteractionMode('eager')
 extend('required', {
     ...required,
@@ -48,13 +50,12 @@ extend('regex', {
     ...regex,
     message: '{_field_} {_value_} does not match 09*********',
 })
+
 export default {
     components: {
         ValidationObserver,
         ValidationProvider,
     },
-
-    auth: false,
     data() {
         return {
             applicant: {
@@ -83,39 +84,77 @@ export default {
                 totalExperience: '',
                 image: null,
             },
+            dob: '',
+            edituserData: null,
+            min: '1990-01-01',
+            max: new Date(),
         }
+    },
+    beforeCreate() {
+        this.$axios
+            .get(`/api/detail?id=${this.$route.params.id}`)
+            .then((userData) => {
+                this.dob = userData.data.dob
+                this.applicant = userData.data.applicant
+            })
+            .catch((err) => {
+                if (err) {
+                    this.applicant = null
+                }
+            })
     },
     computed: {
         ...mapGetters({
-            validationError: 'applicantForm/validationError',
-        }),
-        ...mapGetters({
-            userData: 'applicantForm/userData',
+            validateError: 'applicantForm/validateError',
         }),
     },
-    created() {
-        if (this.userData) {
-            this.applicant = this.userData
-            this.$store.dispatch('applicantForm/cancel')
-        }
-    },
+    created() {},
     mounted() {},
     methods: {
-        async submitApplicant() {
-            console.log('hello')
+
+        async updateUser() {
             const isValid = await this.$refs.observer.validate()
             if (isValid) {
-                this.$store.dispatch('applicantForm/validateUser', {
-                    userData: this.applicant,
-                    $axios: this.$axios,
+                const formData = new FormData()
+                if (this.applicant.image != null) {
+                    formData.append('imgfile', this.applicant.image)
+                    Object.entries(this.applicant).forEach(([key, value]) => {
+                        formData.append(key, value)
+                    })
+                    formData.append(
+                        'profilePhoto',
+                        this.applicant.image.name
+                    )
+                }
+
+                this.$axios
+                    .patch('/api/update', formData)
+                    .then((data) => {
+                        if (data) {
+                            alert('SUCCESSFUL!')
+                            this.$router.push({
+                                name: 'applicantInfo-detail-id',
+                                params: { id: this.applicant.id },
+                            })
+                        }
+                    })
+
+                .catch((err) => {
+                    console.log(err)
                 })
             }
         },
+
         onFileChange(e) {
             if (e.target.files[0]) {
                 const file = e.target.files[0]
                 this.applicant.image = URL.createObjectURL(file)
             }
+        },
+        backToList() {
+            this.$router.push({
+                name: 'applicantInfo',
+            })
         },
     },
 }

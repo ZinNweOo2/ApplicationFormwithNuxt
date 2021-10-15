@@ -1,7 +1,7 @@
 <template>
     <b-container>
         <ValidationObserver ref="observer">
-            <b-form @submit.prevent="submitApplicant">
+            <b-form @submit.prevent="updateUser">
                 <b-card class="px-3 mt-5 mx-5 background-image">
                     <b-card-title align="center"
                         >Fill Your Information</b-card-title
@@ -40,7 +40,7 @@
                                 id="profilePhoto"
                                 type="file"
                                 accept="image/*"
-                                v-model="applicant.profilePhoto"
+                                v-model="applicant.image"
                                 @change="onFileChange"
                             ></b-form-file>
                         </b-col>
@@ -435,21 +435,22 @@
 
                     <!-- </ValidationObserver> -->
 
-                    <div class="errorMsg" :v-if="validationError">
+                    <!-- <div class="errorMsg" :v-if="validationError">
                         <div v-for="(err, index) in validationError" :key="index">
                             <p>- {{ index + ' : ' + err[0] }}</p>
                         </div>
-                    </div>
+                    </div> -->
 
                     <b-button type="reset" variant="danger" class="mr-3"
-                        >Reset</b-button
+                        >Cancle</b-button
                     >
-                    <b-button type="submit" variant="primary">Submit</b-button>
+                    <b-button type="submit" variant="primary">Update</b-button>
                 </b-card>
             </b-form>
         </ValidationObserver>
     </b-container>
 </template>
 
-<script src="../../services/pages/applicantForm/index.js"></script>
-<style src="../../assets/css/pages/applicantForm/index.css"></style>
+<script src="../../../services/pages/applicantInfo/update/index.js"></script>
+<style src="../../../assets/css/pages/applicantInfo/update/index.css"></style>
+

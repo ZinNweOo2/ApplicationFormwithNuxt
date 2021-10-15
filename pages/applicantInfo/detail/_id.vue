@@ -1,164 +1,160 @@
 <template>
     <b-container>
         <b-card class="px-3 mt-5 mx-5 parent">
-            <div class="child">
-                <b-img :src="applicantDetail.applicant.profilePhoto"></b-img>
-            </div>
-            <b-card-title>Personal Information</b-card-title>
+            <b-card-title align="center">Personal Information</b-card-title>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span> Name</span> </b-col>
+                <b-col md="6"><strong> Name</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{ applicantDetail.applicant.name }}</strong>
+                  {{ userDetail.applicant.name }}
+                </b-col>
+            </b-row>
+            <hr />
+             <b-row class="mt-3">
+                <b-col md="6"><strong> Profile Photo</strong> </b-col>
+                <b-col md="6">
+                    <b-img :src="userDetail.applicant.profilePhoto"></b-img>
+
+                </b-col>
+            </b-row> 
+            <hr />
+            <b-row class="mt-3">
+                <b-col md="6"><strong> Date Of Birth</strong> </b-col>
+                <b-col md="6">
+                    {{ userDetail.dob }}
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span> Profile Photo</span> </b-col>
+                <b-col md="6"><strong> Email:</strong> </b-col>
                 <b-col md="6">
-                    <b-img
-                        :src="applicantDetail.applicant.profilePhoto"
-                    ></b-img>
+                  {{ userDetail.applicant.email }}
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span> Date Of Birth</span> </b-col>
+                <b-col md="6"><strong>Phone Number</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{ applicantDetail.dob }}</strong>
+                    {{ userDetail.applicant.phone_no1 }}
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span> Email:</span> </b-col>
+                <b-col md="6"><strong> Current Address</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{ applicantDetail.applicant.email }}</strong>
+                    {{
+                        userDetail.applicant.currentAddress
+                    }}
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span>Phone Number</span> </b-col>
+                <b-col md="6"><strong> Hometown Address</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{ applicantDetail.applicant.phone_no1 }}</strong>
-                </b-col>
-            </b-row>
-            <hr />
-            <b-row class="mt-3">
-                <b-col md="6"><span> Current Address</span> </b-col>
-                <b-col md="6">
-                    <strong>{{
-                        applicantDetail.applicant.currentAddress
-                    }}</strong>
-                </b-col>
-            </b-row>
-            <hr />
-            <b-row class="mt-3">
-                <b-col md="6"><span> Hometown Address</span> </b-col>
-                <b-col md="6">
-                    <strong>{{
-                        applicantDetail.applicant.hometownAddress
-                    }}</strong>
+                    {{
+                        userDetail.applicant.hometownAddress
+                    }}
                 </b-col>
             </b-row>
             <hr />
 
-            <b-card-title class="mt-5">Education Background</b-card-title>
+            <b-card-title class="mt-5" align="center">Education Background</b-card-title>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span> Bachelor Information</span> </b-col>
+                <b-col md="6"><strong> Bachelor Information</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{ applicantDetail.applicant.bachelorUni }},
-                        {{ applicantDetail.applicant.bachelorDegree }},
-                        {{ applicantDetail.applicant.bachelorYear }}
-                    </strong>
+                    {{ userDetail.applicant.bachelorUni }},
+                    {{ userDetail.applicant.bachelorDegree }},
+                    {{ userDetail.applicant.bachelorYear }}
+                    
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span> Master Information</span> </b-col>
+                <b-col md="6"><strong> Master Information</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{ applicantDetail.applicant.masterUni }},
-                        {{ applicantDetail.applicant.masterDegree }},
-                        {{ applicantDetail.applicant.masterYear }}
-                    </strong>
+                    {{ userDetail.applicant.masterUni }},
+                    {{ userDetail.applicant.masterDegree }},
+                    {{ userDetail.applicant.masterYear }}
+                  
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span> Deploma Information</span> </b-col>
+                <b-col md="6"><strong> Deploma Information</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{ applicantDetail.applicant.deplomaName }}</strong>
+                    {{ userDetail.applicant.deplomaName }}
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span> Certificate</span> </b-col>
+                <b-col md="6"><strong> Certificate</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{ applicantDetail.applicant.certificate }}</strong>
+                   {{ userDetail.applicant.certificate }}
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span> Programming Language Skill</span> </b-col>
+                <b-col md="6"><strong> Programming Language Skill</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{ applicantDetail.applicant.programmingLang }} :
-                        {{ applicantDetail.applicant.programmingLevel }}
-                    </strong>
+                    {{ userDetail.applicant.programmingLang }} :
+                        {{ userDetail.applicant.programmingLevel }}
+                   
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span>English</span> </b-col>
+                <b-col md="6"><strong>English</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{ applicantDetail.applicant.english }}</strong>
+                    {{ userDetail.applicant.english }}
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span>Japanese</span> </b-col>
+                <b-col md="6"><strong>Japanese</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{ applicantDetail.applicant.japanese }}</strong>
+                    {{ userDetail.applicant.japanese }}
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span>Other</span> </b-col>
+                <b-col md="6"><strong>Other</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{ applicantDetail.applicant.otherLang }}</strong>
+                    {{ userDetail.applicant.otherLang }}
                 </b-col>
             </b-row>
             <hr />
 
-            <b-card-title class="mt-5">Education Background</b-card-title>
+            <b-card-title class="mt-5" align="center">Experience</b-card-title>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span>Internship Info</span> </b-col>
+                <b-col md="6"><strong>Internship Info</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{
-                        applicantDetail.applicant.internshipInfo
-                    }}</strong>
+                    {{
+                        userDetail.applicant.internshipInfo
+                    }}
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span>Job Experience</span> </b-col>
+                <b-col md="6"><strong>Job Experience</strong> </b-col>
                 <b-col md="6">
-                    <strong>{{
-                        applicantDetail.applicant.jobExperience
-                    }}</strong>
+                    {{
+                        userDetail.applicant.jobExperience
+                    }}
                 </b-col>
             </b-row>
             <hr />
             <b-row class="mt-3">
-                <b-col md="6"><span>Total Experience Year</span> </b-col>
+                <b-col md="6"><strong>Total Experience Year</strong> </b-col>
                 <b-col md="6">
                     <strong>{{
-                            applicantDetail.applicant.totalExperience
+                            userDetail.applicant.totalExperience
                         }}</strong>
                 </b-col>
             </b-row>
             <b-card-footer class="mt-3">
-                <NuxtLink :to="{ name: 'applicantInfo' }" class="back">
+                <NuxtLink :to="{ name: 'applicantInfo' }" class="back" align="center">
                     BACK
                 </NuxtLink>
             </b-card-footer>

@@ -16,22 +16,26 @@ export default {
         }
     },
     methods: {
-        /**
-         * click cencel button and change route
-         * @returns void
-         */
         cancel() {
             this.$router.push('/applicantForm')
         },
-        /**
-         * if applicant confirm , create new applicant
-         * @returns void
-         */
-        confirmUser() {
-            console.log("hey")
 
-            this.$router.push({
-                path: '/applicantForm/save',
+        confirmUser() {
+            // console.log(this.userData)
+
+            const formData = new FormData()
+            if (this.userData.profilePhoto !== null) {
+                formData.append('imgfile', this.userData.profilePhoto)
+                Object.entries(this.userData).forEach(([key, value]) => {
+                    formData.append(key, value)
+                })
+                console.log(this.userData.profilePhoto)
+            }
+
+            formData.append('profilePhoto', this.userData.profilePhoto.name)
+            this.$store.dispatch('applicantForm/createUser', {
+                formData,
+                $axios: this.$axios,
             })
         },
     },

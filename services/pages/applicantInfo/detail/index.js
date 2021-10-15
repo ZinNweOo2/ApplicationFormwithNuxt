@@ -2,7 +2,7 @@ import { mapGetters } from 'vuex'
 export default {
     async asyncData({ $axios, store, params }) {
         try {
-            await store.dispatch('applicantInfo/fetchApplicantDetail', {
+            await store.dispatch('applicantInfo/fetchUserDetail', {
                 params,
                 $axios,
             })
@@ -12,7 +12,9 @@ export default {
     },
     computed: {
         ...mapGetters({
-            applicantDetail: 'applicantInfo/applicantDetail',
+            userDetail: 'applicantInfo/userDetail',
         }),
-    },
+
+    }
+
 }

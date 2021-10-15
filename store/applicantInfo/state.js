@@ -1,4 +1,4 @@
 export default () => ({
-    applicantList: [],
-    applicantDetail: [],
+    userList: [],
+    userDetail: [],
 })

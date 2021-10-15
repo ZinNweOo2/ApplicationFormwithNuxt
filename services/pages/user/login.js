@@ -25,7 +25,7 @@ export default {
                 await this.$auth.loginWith('local', {
                     data: this.form,
                 })
-                this.$router.push('/applicantInfo/list')
+                this.$router.push('/applicantInfo')
             } catch (err) {
                 console.error(err)
             }

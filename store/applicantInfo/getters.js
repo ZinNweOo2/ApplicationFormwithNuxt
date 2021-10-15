@@ -1,4 +1,4 @@
 export default {
-    applicantList: (state) => state.applicantList,
-    applicantDetail: (state) => state.applicantDetail,
+    userList: (state) => state.userList,
+    userDetail: (state) => state.userDetail,
 }

@@ -78,7 +78,7 @@
                 <b-row class="mt-3">
                     <b-col md="6"><span> Deploma Name</span> </b-col>
                     <b-col md="6">
-                        <span>{{ userData.diplomaName }}</span>
+                        <span>{{ userData.deplomaName }}</span>
                     </b-col>
                 </b-row>
                 <hr />

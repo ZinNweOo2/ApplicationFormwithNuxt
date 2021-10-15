@@ -4,6 +4,6 @@ export default {
         state.applicantList = list
     },
     [SET_APPLICANT_DETAIL](state, detail) {
-        state.applicantDetail = detail
+        state.userDetail = detail
     },
 }

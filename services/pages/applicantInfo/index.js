@@ -20,18 +20,18 @@ export default {
                 { key: 'id', label: 'ID', sortable: true },
                 { key: 'name', label: 'Name', sortable: true },
                 {
-                    key: 'phone_no1',
-                    label: 'Phone No',
-                    sortable: true,
-                },
-                {
                     key: 'email',
                     label: 'Email',
                     sortable: true,
                 },
                 {
+                    key: 'phone_no1',
+                    label: 'Phone No',
+                    sortable: true,
+                },
+                {
                     key: 'bachelorUni',
-                    label: 'Bachelor University',
+                    label: ' University (Bachelor)',
                     sortable: true,
                 },
                 { key: 'operation', label: 'Operation' },
@@ -46,37 +46,36 @@ export default {
     },
     computed: {
         ...mapGetters({
-            applicantList: 'applicantInfo/applicantList',
+            userList: 'applicantInfo/userList',
         }),
         rows() {
             return this.showList.length
         },
     },
+
     mounted() {
-        this.filterPostList()
+        this.AllApplicant()
     },
 
     methods: {
-        /**
-         * search form submit and filter applicant list
-         */
         onSubmitSearch() {
-            console.log('hi')
             this.filterPostList()
-                // Trick to reset/clear native browser form validation state
             this.show = false
             this.$nextTick(() => {
                 this.show = true
             })
         },
-        /**
-         * get the value form search input form and filter applicant list
-         */
+        AllApplicant() {
+            this.$axios.get('/api/show').then((res) => {
+                this.resultList = res.data
+                this.showList = this.resultList
+            })
+        },
         filterPostList() {
             if (this.form.searchParam === '') {
-                this.showList = this.applicantList
+                this.showList = this.userList
             } else {
-                this.showList = this.applicantList.filter((applicant) => {
+                this.showList = this.userList.filter((applicant) => {
                     return (
                         applicant.name
                         .toLowerCase()
@@ -98,8 +97,25 @@ export default {
             this.infoModal.title = ''
             this.infoModal.content = ''
         },
-        edit(item, index, button) {
-            console.log('@edit...')
+        edit(id) {
+            this.$router.push({
+                name: 'applicantInfo-update-id',
+                params: { id },
+            })
+        },
+        deleteApplicant(id) {
+            if (confirm('Are you sure?')) {
+                this.$axios
+                    .delete('/api/destroy/?id=' + id)
+                    .then((response) => {
+                        if (response) {
+                            this.AllApplicant()
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            }
         },
     },
 }

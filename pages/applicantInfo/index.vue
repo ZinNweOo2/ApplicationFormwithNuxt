@@ -1,17 +1,18 @@
 <template>
     <b-container>
         <b-row class="my-4">
-            <b-col lg="5">
+            <b-col lg="5" md="5" sm="5" align="center">
                 <h2>Applicant List</h2>
             </b-col>
-            <b-col>
+            <b-col lg="2" md="1" sm="2"></b-col>
+            <b-col lg="4" md="6" sm="4" class="ml-5">
                 <b-form
                     v-if="show"
                     inline
                     class="justify-content-around"
                     @submit.prevent="onSubmitSearch"
                 >
-                    <b-form-group
+                    <!-- <b-form-group
                         id="input-group-search"
                         label-for="input-search"
                     >
@@ -29,7 +30,7 @@
                         class="text-uppercase"
                     >
                         Filter
-                    </b-button>
+                    </b-button> -->
                 </b-form>
             </b-col>
         </b-row>
@@ -54,7 +55,26 @@
                     {{ row.item.name }}
                 </NuxtLink>
             </template>
-            
+            <template #cell(operation)="row">
+                <b-button
+                    class="mr-1"
+                    size="sm"
+                    @click="info(row.item, row.index, $event.target)"
+                >
+                    DETAILS
+                </b-button>
+                 <b-button class="mr-1" size="sm" variant="success" @click="edit(row.item.id)">
+                    EDIT
+                </b-button>
+                <b-button
+                    class="mr-1"
+                    size="sm"
+                    variant="danger"
+                    @click="deleteApplicant(row.item.id)"
+                >
+                    DELETE
+                </b-button>
+            </template>
         </b-table>
         <!-- Pagination -->
         <b-pagination

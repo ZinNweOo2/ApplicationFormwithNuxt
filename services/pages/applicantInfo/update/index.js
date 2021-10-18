@@ -133,9 +133,12 @@ export default {
                         if (data) {
                             alert('SUCCESSFUL!')
                             this.$router.push({
-                                name: 'applicantInfo-detail-id',
-                                params: { id: this.applicant.id },
-                            })
+                                    name: 'applicantInfo-detail-id',
+                                    params: { id: this.applicant.id },
+                                })
+                                // this.$router.push({
+                                //     path: '/confirm',
+                                // })
                         }
                     })
 

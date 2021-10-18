@@ -15,10 +15,12 @@ import {
     size,
 } from 'vee-validate/dist/rules'
 import { mapGetters } from 'vuex'
+import constants from '../../../constants'
+
 setInteractionMode('eager')
 extend('required', {
     ...required,
-    message: '{_field_} can not be empty',
+    message: '{_field_} can not be empty.',
 })
 extend('numeric', {
     ...numeric,
@@ -83,6 +85,8 @@ export default {
                 totalExperience: '',
                 image: null,
             },
+            onezerozero: constants.ONEZEROZERO,
+            twofivezero: constants.TWOFIVEZERO,
         }
     },
     computed: {

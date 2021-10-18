@@ -6,7 +6,15 @@
                     <b-card-title align="center"
                         >Fill Your Information</b-card-title
                     >
-                    <ValidationProvider v-slot="{ errors }" rules="required">
+                    <!-- <ValidationProvider v-slot="{ errors }" rules="required"> -->
+                    <ValidationProvider
+                        v-slot="{ errors }"
+                        name="Name"
+                        :rules="{
+                            required: true,
+                            max: this.onezerozero,
+                        }"
+                    >
                         <b-row class="my-1">
                             <b-col>
                                 <label style="color: #ffffff">Name**</label>
@@ -18,6 +26,7 @@
                                     type="text"
                                     rules="max"
                                 ></b-form-input>
+
                                 <span class="invalid-message">
                                     {{ errors[0] }}</span
                                 >
@@ -36,7 +45,7 @@
                                 accept="image/*"
                                 @change="onFileChange"
                             /> -->
-                             <b-form-file
+                            <b-form-file
                                 id="profilePhoto"
                                 type="file"
                                 accept="image/*"
@@ -45,7 +54,13 @@
                             ></b-form-file>
                         </b-col>
                     </b-row>
-                    <ValidationProvider v-slot="{ errors }" rules="required">
+                    <ValidationProvider
+                        name="Date of Birth"
+                        :rules="{
+                            required: true,
+                        }"
+                    >
+                        <!-- v-slot="{ errors }" -->
                         <b-row class="my-1">
                             <b-col>
                                 <label style="color: #ffffff"
@@ -57,12 +72,20 @@
                                     v-model="applicant.dob"
                                 ></b-form-datepicker>
                             </b-col>
-                            <span class="invalid-message">
+                            <!-- <span class="invalid-message" align="center">
                                 {{ errors[0] }}</span
-                            >
+                            > -->
                         </b-row>
                     </ValidationProvider>
-                    <ValidationProvider v-slot="{ errors }" rules="max:12">
+                    <!-- <ValidationProvider v-slot="{ errors }" rules="max:12"> -->
+                    <ValidationProvider
+                        v-slot="{ errors }"
+                        name="Phone No"
+                        :rules="{
+                            required: true,
+                            digits: 11,
+                        }"
+                    >
                         <b-row class="my-1">
                             <b-col>
                                 <label style="color: #ffffff"
@@ -74,7 +97,6 @@
                                     id="input-name"
                                     v-model="applicant.phone_no1"
                                     type="number"
-                                    required
                                 ></b-form-input>
                                 <span class="invalid-message">
                                     {{ errors[0] }}</span
@@ -84,7 +106,11 @@
                     </ValidationProvider>
                     <ValidationProvider
                         v-slot="{ errors }"
-                        rules="required|max:100"
+                        name="Email"
+                        :rules="{
+                            required: true,
+                            max: this.onezerozero,
+                        }"
                     >
                         <b-row class="my-1">
                             <b-col>
@@ -94,18 +120,25 @@
                                 <b-form-input
                                     id="input-email"
                                     v-model="applicant.email"
-                                    
-                                    required
-                                ></b-form-input>
+                                >
+                                </b-form-input>
                                 <span class="invalid-message">
                                     {{ errors[0] }}</span
                                 >
                             </b-col>
                         </b-row>
                     </ValidationProvider>
-                    <ValidationProvider
+                    <!-- <ValidationProvider
                         v-slot="{ errors }"
                         rules="required|max:255"
+                    > -->
+                    <ValidationProvider
+                        v-slot="{ errors }"
+                        name="Current Address"
+                        :rules="{
+                            required: true,
+                            max: this.twofivezero,
+                        }"
                     >
                         <b-row class="my-1">
                             <b-col>
@@ -120,8 +153,8 @@
                                     v-model="applicant.currentAddress"
                                     max-rows="6"
                                     type="text"
-                                    required
-                                ></b-form-textarea>
+                                >
+                                </b-form-textarea>
                                 <span class="invalid-message">
                                     {{ errors[0] }}</span
                                 >
@@ -142,7 +175,8 @@
                                     max-rows="6"
                                     id="input-name"
                                     type="text"
-                                ></b-form-textarea>
+                                >
+                                </b-form-textarea>
                                 <span class="invalid-message">
                                     {{ errors[0] }}</span
                                 >
@@ -157,46 +191,65 @@
                         </b-col>
                         <b-col sm="9">
                             <h5 style="color: #17a2b8">Bachelor</h5>
-                            <ValidationProvider
+                            <!-- <ValidationProvider
                                 v-slot="{ errors }"
                                 rules="required|max:100"
+                            > -->
+                            <ValidationProvider
+                                v-slot="{ errors }"
+                                name="University"
+                                :rules="{
+                                    required: true,
+                                    max: this.onezerozero,
+                                }"
                             >
                                 <label style="color: #ffffff">University</label>
                                 <b-form-input
                                     id="input-name"
                                     v-model="applicant.bachelorUni"
                                     type="text"
-                                    required
-                                ></b-form-input>
+                                >
+                                </b-form-input>
                                 <span class="invalid-message">
                                     {{ errors[0] }}</span
                                 >
                             </ValidationProvider>
-                            <ValidationProvider
+                            <!-- <ValidationProvider
                                 v-slot="{ errors }"
                                 rules="required|max:20"
+                            > -->
+                            <ValidationProvider
+                                v-slot="{ errors }"
+                                name="Year"
+                                :rules="{
+                                    required: true,
+                                    max: this.onezerozero,
+                                }"
                             >
                                 <label style="color: #ffffff">Year</label>
                                 <b-form-input
                                     id="input-name"
                                     v-model="applicant.bachelorYear"
                                     type="text"
-                                    required
-                                ></b-form-input>
+                                >
+                                </b-form-input>
                                 <span class="invalid-message">
                                     {{ errors[0] }}</span
                                 >
                             </ValidationProvider>
                             <ValidationProvider
                                 v-slot="{ errors }"
-                                rules="required|max:100"
+                                name="Degree"
+                                :rules="{
+                                    required: true,
+                                    max: this.onezerozero,
+                                }"
                             >
                                 <label style="color: #ffffff">Degree</label>
                                 <b-form-input
                                     id="input-name"
                                     v-model="applicant.bachelorDegree"
                                     type="text"
-                                    required
                                 ></b-form-input>
                                 <span class="invalid-message">
                                     {{ errors[0] }}</span
@@ -436,7 +489,10 @@
                     <!-- </ValidationObserver> -->
 
                     <div class="errorMsg" :v-if="validationError">
-                        <div v-for="(err, index) in validationError" :key="index">
+                        <div
+                            v-for="(err, index) in validationError"
+                            :key="index"
+                        >
                             <p>- {{ index + ' : ' + err[0] }}</p>
                         </div>
                     </div>
